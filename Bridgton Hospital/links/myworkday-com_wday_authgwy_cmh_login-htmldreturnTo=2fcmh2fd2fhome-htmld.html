@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1;IE=EDGE"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="author" content="">
+    <script type="text/javascript">
+        function scriptLoadFallback() {
+            if (window.location.search.indexOf("reloaded") == -1) {
+                window.location.search += '&' + encodeURIComponent("reloaded");
+            } else if (workday.maintenancePageUrl) {
+                window.location = workday.maintenancePageUrl;
+            } else {
+                window.location = "https://community.workday.com/maintenance-page";
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        // Add properties to workday
+        window.workday = window.workday || {};
+        workday.tenant = 'cmh';
+        workday.clientOrigin = 'https://www.myworkday.com';
+        workday.language = 'en_US';
+        workday.clientVersion = '0';
+        workday.systemConfidenceLevel = 'PROD';
+        workday.oauthAuthorizationPending = false;
+        workday.proxyLoginEnabled = false;
+        workday.maintenancePageUrl = 'https://www.myworkday.com/wday/drs/outage?t=cmh';
+        workday.deviceTrustDetailsUrl = '';
+        workday.pendingAuthDetailsUrl = '';
+        workday.webAuthnDetailsUrl = '';
+        workday.enableBluePrimaryButtons = 'true';
+
+        // Construct init params for GWT app
+        workday.initParams = {
+            authGatewayPath: '/wday/authgwy',
+            baseDir: '/wday/asset/ui-html/',
+            systemConfidenceLevel: 'PROD',
+            cdn: {
+                endpoint: 'www.myworkdaycdn.com',
+                enabled: true,
+                allowed: true
+            },
+            proxyEnabled: false,
+            currentVersion: '20.0.04.045',
+            serviceType: 'authgwy',
+            loginAuthURL: '/cmh/login-auth.xml',
+            environment: '',
+            environmentType: 'PROD'
+        };
+    </script>
+    <script type="text/javascript" onerror="scriptLoadFallback()"
+            src="https://www.myworkday.com/wday/asset/ui-html/base/shared-min.js?1741207457528">
+    </script>
+    <script
+    type = "text/javascript"
+    src = "https://www.myworkday.com/wday/asset/uic-shared-vendors/shared-vendors.min.js"/>
+    </script>
+    <script type="text/javascript">
+        function isOAuthAuthorizationPending() {
+            return workday.oauthAuthorizationPending;
+        }
+
+        workday.appRoot = "{\"widget\":\"appRoot\"}";
+        workday.clientRenderer.renderLoginApp(workday.initParams);
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- DIV used by UIS acceptance tests to identify which login page is loaded -->
+    <div id="htmld_login"></div>
+    <div id="container">
+        <style>
+            #__gwt_historyFrame {
+                position: absolute;
+                top: -1px;
+                left: -1px;
+                width: 0px;
+                height: 0px;
+                border: 0px solid rgba(0, 0, 0, 0.00);
+            }
+        </style>
+        <div id="login-wrap" class="clearfix">
+            <div id="login-area" data-automation-id="login">
+                <div id="htmlContent"></div>
+            </div>
+            <!-- END WORKDAY LOGIN -->
+        </div>
+        <div id="notice-detail">
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="footer">
+    <div id="schedule">
+    </div>
+    <span id="copyright">
+		</span>
+
+    <span id="powered-by"></span>
+</div>
+<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
+        style="position:absolute;width:0;height:0;border:0"></iframe>
+<div id="spinnerContainer"></div>
+<script type="text/javascript">
+    /*<![CDATA[*/
+    function populateContent() {
+        if (uri['args']['preload'] == 'true') {
+            writeStaticFileAsScript('https://www.myworkday.com/wday/asset/ui-html/update/WorkdayApp/WorkdayApp.nocache.js?' + workday.checksums["WorkdayApp.nocache.js"]);
+        }
+    }
+
+    if (document.readyState != "loading") {
+        populateContent();
+    } else {
+        document.onreadystatechange = function () {
+            populateContent();
+            document.onreadystatechange = null;
+        }
+    }
+    /*]]>*/
+</script>
+</body>
+</html>
